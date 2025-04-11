@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amna's Artistry</title>
+      <style>
+        :root {
+            --primary: #ad5389;
+            --secondary: #3c1053;
+            --dark: #121212;
+            --light: #f0f0f0;
+            --accent: #ff5f6d;
+            --text: #e0e0e0;
+            --muted: #9e9e9e;
+            --card-bg: #1e1e1e;
+            --gradient-light: rgba(173, 83, 137, 0.8);
+            --gradient-dark: rgba(60, 16, 83, 0.8);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark);
+            color: var(--text);
+            line-height: 1.8;
+            background-image: 
+                radial-gradient(circle at 10% 20%, var(--gradient-dark), transparent 40%),
+                radial-gradient(circle at 90% 80%, var(--gradient-light), transparent 30%);
+            background-attachment: fixed;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 4rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="white" stroke-width="0.5" stroke-opacity="0.1"/></svg>');
+            opacity: 0.3;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        header p {
+            max-width: 800px;
+            margin: 1rem auto;
+            font-size: 1.3rem;
+            font-weight: 300;
+            font-style: italic;
+            position: relative;
+        }
+        
+        nav {
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 1.5rem;
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.5rem;
+            font-size: 1.1rem;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        main {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 2rem;
+        }
+        
+        .intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            color: var(--accent);
+        }
+        
+        .intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 6rem 0;
+            padding: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: "";
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding: 1rem;
+            position: relative;
+            width: 50%;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 3rem;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 3rem;
+        }
+        
+        .timeline-item::after {
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: var(--dark);
+            border: 4px solid var(--accent);
+            border-radius: 50%;
+            top: 20px;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -16px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -16px;
+        }
+        
+        .timeline-content {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .timeline-content h3 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 400;
+        }
+        
+        .timeline-content .period {
+            color: var(--accent);
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 5rem 0 3rem;
+            position: relative;
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--accent);
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .art-styles {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .art-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s, box-shadow 0.4s;
+            position: relative;
+        }
+        
+        .art-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .art-card-image {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .art-card-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.7) 100%);
+        }
+        
+        .art-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .art-card:hover .art-card-image img {
+            transform: scale(1.1);
+        }
+        
+        .art-card-content {
+            padding: 1.8rem;
+        }
+        
+        .art-card h3 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 400;
+        }
+        
+        .art-card p {
+            margin-bottom: 1.2rem;
+            line-height: 1.7;
+        }
+        
+        .art-card .period {
+            color: var(--accent);
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .art-card .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .art-card .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        #modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s;
+        }
+        
+        #modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .modal-content {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .close-modal:hover {
+            background: var(--primary);
+            transform: rotate(90deg);
+        }
+        
+        .modal-content h2 {
+            color: var(--accent);
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        
+        .modal-content em {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .modal-content p {
+            margin: 1.5rem 0;
+            line-height: 1.8;
+        }
+        
+        .modal-content ul {
+            margin: 1.5rem 2rem;
+        }
+        
+        .modal-content li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .modal-content h4 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            font-weight: 400;
+        }
+        
+        .artwork-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .artwork-example {
+            height: 200px;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .artwork-example img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+        
+        .artwork-example:hover img {
+            transform: scale(1.1);
+        }
+        
+        .artwork-example::after {
+            content: attr(data-title);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 0.9rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .artwork-example:hover::after {
+            transform: translateY(0);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="white" stroke-width="0.5" stroke-opacity="0.1"/></svg>');
+            opacity: 0.3;
+        }
+        
+        footer p {
+            margin: 0;
+            position: relative;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 992px) {
+            .timeline::before {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 80px;
+                padding-right: 0;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(odd)::after,
+            .timeline-item:nth-child(even)::after {
+                left: 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            header p {
+                font-size: 1.1rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .art-styles {
+                grid-template-columns: 1fr;
+            }
+            
+            .intro h2 {
+                font-size: 2rem;
+            }
+            
+            .intro p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .chat-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #1e1e1e;
+      border: 1px solid #ad5389;
+      border-radius: 12px;
+      width: 300px;
+      max-height: 400px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      z-index: 9999;
+    }
+    .chat-header {
+      background: linear-gradient(135deg, #ad5389, #3c1053);
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .chat-messages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      font-size: 0.95rem;
+    }
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #3c1053;
+    }
+    .chat-input input {
+      flex: 1;
+      border: none;
+      padding: 10px;
+      background-color: #292929;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+    .chat-input button {
+      background-color: #ad5389;
+      border: none;
+      padding: 10px 15px;
+      color: #fff;
+      cursor: pointer;
+    }
+    .user-msg {
+      text-align: right;
+      margin: 5px 0;
+    }
+    .bot-msg {
+      text-align: left;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+   <header>
+        <h1>Amna's Artistry</h1>
+        <p>Exploring the Evolution of Human Expression Through Art</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#" data-scroll="intro">Home</a></li>
+            <li><a href="#" data-scroll="timeline-section">Timeline</a></li>
+            <li><a href="#" data-scroll="traditional-art">Traditional Art</a></li>
+            <li><a href="#" data-scroll="modern-art">Modern Art</a></li>
+            <li><a href="#" data-scroll="digital-art">Digital Art</a></li>
+            <li><a href="#" data-scroll="global-art">Global Art</a></li>
+            <li><a href="#" data-scroll="about">About</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section class="intro" id="intro">
+            <h2>Welcome to the World of Art</h2>
+            <p>Art has been a fundamental means of human expression throughout history. From ancient cave paintings to cutting-edge digital creations, humans have always found ways to express their creativity, emotions, and ideas visually. Embark on a journey through time and explore the diverse movements, mediums, and cultural expressions that have shaped our artistic heritage.</p>
+        </section>
+        
+        <section id="timeline-section">
+            <h2 class="section-title">Art Through Time</h2>
+            <div class="timeline">
+            </div>
+        </section>
+        
+        <section id="traditional-art">
+            <h2 class="section-title">Traditional Art Movements</h2>
+            <div class="art-styles" id="traditional-art-styles">
+            </div>
+        </section>
+        
+        <section id="modern-art">
+            <h2 class="section-title">Modern Art Movements</h2>
+            <div class="art-styles" id="modern-art-styles">
+            </div>
+        </section>
+        
+        <section id="digital-art">
+            <h2 class="section-title">Digital Art Forms</h2>
+            <div class="art-styles" id="digital-art-styles">
+            </div>
+        </section>
+        
+        <section id="global-art">
+            <h2 class="section-title">Global Art Traditions</h2>
+            <div class="art-styles" id="global-art-styles">
+            </div>
+        </section>
+        
+        <section id="about" class="intro">
+            <h2>About This Project</h2>
+            <p>This website aims to introduce students to various art styles throughout history and across cultures. Each art movement represents a unique perspective and approach to visual expression. Click on "Learn more" for any style to discover its characteristics, notable artists, and see example artworks.</p>
+            <p>All artwork images are used for educational purposes. This website acknowledges the artistic contributions of the original creators of these significant works.</p>
+        </section>
+    </main>
+    
+    <div id="modal">
+        <div class="modal-content">
+            <button class="close-modal">×</button>
+            <div id="modal-content-inner">
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© Computer Science Project | Created by Amna Mustafa</p>
+    </footer>
+    
+    <script>
+        // Art styles data 
+        const artStyles = {
+            traditional: [
+                {
+                    id: 'renaissance',
+                    title: 'Renaissance',
+                    period: '14th-17th Century',
+                    description: 'A revival of classical learning and values, emphasizing realism, proportion, and perspective in art.',
+                    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Raphael_School_of_Athens.jpg/320px-Raphael_School_of_Athens.jpg',
+                    fullDescription: `
+                        <p>The Renaissance was a cultural movement that profoundly affected European intellectual life in the early modern period. Beginning in Italy in the 14th century, it spread to the rest of Europe by the 16th century.</p>
+                        <p><strong>Key characteristics:</strong></p>
+                        <ul>
+                            <li>Realistic representation of the human form</li>
+                            <li>Use of perspective and proportions</li>
+                            <li>Interest in classical antiquity</li>
+                            <li>Emphasis on humanism and individualism</li>
+                            <li>Religious and mythological subject matter</li>
+                        </ul>
+                        <p><strong>Notable artists:</strong> Leonardo da Vinci, Michelangelo, Raphael, Botticelli, and Titian.</p>
+                        <h4>Famous Works</h4>
+                    `,
+                    examples: [
+                        { title: 'Mona Lisa by Leonardo da Vinci', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/250px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg' },
+                        { title: 'The Birth of Venus by Botticelli', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg/350px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg' },
+                        { title: 'The Creation of Adam by Michelangelo', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg/320px-Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg' }
+                    ],
+                    timelineYear: 1500
+                },
+                {
+                    id: 'baroque',
+                    title: 'Baroque',
+                    period: '17th-18th Century',
+                    description: 'Characterized by dramatic effects, dynamic movement, emotional intensity, and rich detail.',
+                    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Rembrandt_-_The_Night_Watch_-_Google_Art_Project.jpg/320px-Rembrandt_-_The_Night_Watch_-_Google_Art_Project.jpg',
+                    fullDescription: `
+                        <p>The Baroque period began in Rome, Italy and spread throughout Europe in response to the Protestant Reformation. It was characterized by grandeur, sensuous richness, drama, dynamism, movement, and tension.</p>
+                        <p><strong>Key characteristics:</strong></p>
+                        <ul>
+                            <li>Dramatic contrasts of light and shadow (chiaroscuro)</li>
+                            <li>Dynamic compositions with diagonal lines and curves</li>
+                            <li>Rich, deep colors and ornate detail</li>
+                            <li>Emotional intensity and theatrical effects</li>
+                            <li>Religious themes, still life, and portraiture</li>
+                        </ul>
+                        <p><strong>Notable artists:</strong> Caravaggio, Rembrandt, Rubens, Velázquez, and Bernini.</p>
+                        <h4>Famous Works</h4>
+                    `,
+                    examples: [
+                        { title: 'The Night Watch by Rembrandt', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Rembrandt_-_The_Night_Watch_-_Google_Art_Project.jpg/320px-Rembrandt_-_The_Night_Watch_-_Google_Art_Project.jpg' },
+                        { title: 'The Calling of Saint Matthew by Caravaggio', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/The_Calling_of_Saint_Matthew-Caravaggo_%281599-1600%29.jpg/320px-The_Calling_of_Saint_Matthew-Caravaggo_%281599-1600%29.jpg' },
+                        { title: 'Las Meninas by Diego Velázquez', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Las_Meninas%2C_by_Diego_Vel%C3%A1zquez%2C_from_Prado_in_Google_Earth.jpg/320px-Las_Meninas%2C_by_Diego_Vel%C3%A1zquez%2C_from_Prado_in_Google_Earth.jpg' }
+                    ],
+                    timelineYear: 1650
+                },
+                {
+                    id: 'romanticism',
+                    title: 'Romanticism',
+                    period: 'Late 18th-19th Century',
+                    description: 'Emphasized emotion, individualism, and glorification of nature and the past.',
+                    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg/320px-Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg',
+                    fullDescription: `
+                        <p>Romanticism emerged as a reaction against the Age of Enlightenment and the Industrial Revolution, emphasizing emotion, individualism, and the glorification of nature and the past.</p>
+                        <p><strong>Key characteristics:</strong></p>
+                        <ul>
+                            <li>Emphasis on emotion, imagination, and intuition</li>
+                            <li>Awe of nature and its sublime power</li>
+                            <li>Interest in folklore, mythology, and the medieval past</li>
+                            <li>Dramatic, often turbulent compositions</li>
+                            <li>Vivid color and lighting contrasts</li>
+                        </ul>
+                        <p><strong>Notable artists:</strong> Caspar David Friedrich, J.M.W. Turner, Eugène Delacroix, Francisco Goya, and John Constable.</p>
+                        <h4>Famous Works</h4>
+                    `,
+                    examples: [
+                        { title: 'Wanderer above the Sea of Fog by Caspar David Friedrich', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg/320px-Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg' },
+                        { title: 'Liberty Leading the People by Eugène Delacroix', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Eug%C3%A8ne_Delacroix_-_Le_28_Juillet._La_Libert%C3%A9_guidant_le_peuple.jpg/320px-Eug%C3%A8ne_Delacroix_-_Le_28_Juillet._La_Libert%C3%A9_guidant_le_peuple.jpg' },
+                        { title: 'The Fighting Temeraire by J.M.W. Turner', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/The_Fighting_Temeraire%2C_JMW_Turner%2C_National_Gallery.jpg/320px-The_Fighting_Temeraire%2C_JMW_Turner%2C_National_Gallery.jpg' }
+                    ],
+                    timelineYear: 1800
+                }
+            ],
+            modern: [
+                {
+                    id: 'impressionism',
+                    title: 'Impressionism',
+                    period: 'Late 19th Century',
+                    description: 'Focused on capturing light and color in the moment, with visible brush strokes and emphasis on movement.',
+                    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Claude_Monet%2C_Impression%2C_soleil_levant.jpg/320px-Claude_Monet%2C_Impression%2C_soleil_levant.jpg',
+                    fullDescription: `
+                        <p>Impressionism emerged in the 1870s-1880s as a reaction against traditional academic painting. The movement began in France but soon spread throughout Europe and beyond.</p>
+                        <p><strong>Key characteristics:</strong></p>
+                        <ul>
+                            <li>Emphasis on capturing changing qualities of light</li>
+                            <li>Visible brush strokes and vibrant colors</li>
+                            <li>Open composition and unusual visual angles</li>
+                            <li>Ordinary subject matter from modern life</li>
+                            <li>Movement and temporality</li>
+                        </ul>
+                        <p><strong>Notable artists:</strong> Claude Monet, Pierre-Auguste Renoir, Edgar Degas, Camille
+						<li>Movement and temporality</li>
+                        </ul>
+                        <p><strong>Notable artists:</strong> Claude Monet, Pierre-Auguste Renoir, Edgar Degas, Camille Pissarro, and Mary Cassatt.</p>
+                        <h4>Famous Works</h4>
+                    `,
+                    examples: [
+                        { title: 'Water Lilies by Claude Monet', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Claude_Monet_-_Water_Lilies_-_Google_Art_Project_%28462013%29.jpg/320px-Claude_Monet_-_Water_Lilies_-_Google_Art_Project_%28462013%29.jpg' },
+                        { title: 'Luncheon of the Boating Party by Renoir', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Pierre-Auguste_Renoir_-_Luncheon_of_the_Boating_Party_-_Google_Art_Project.jpg/320px-Pierre-Auguste_Renoir_-_Luncheon_of_the_Boating_Party_-_Google_Art_Project.jpg' },
+                        { title: 'Ballet Class by Edgar Degas', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Edgar_Degas_-_The_Ballet_Class_-_Google_Art_Project.jpg/320px-Edgar_Degas_-_The_Ballet_Class_-_Google_Art_Project.jpg' }
+                    ],
+                    timelineYear: 1870
+                },
+                {
+                    id: 'cubism',
+                    title: 'Cubism',
+                    period: 'Early 20th Century',
+                    description: 'Broke subjects down into geometric shapes, showing multiple viewpoints simultaneously.',
+                    image: 'https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/Les_Demoiselles_d%27Avignon.jpg/320px-Les_Demoiselles_d%27Avignon.jpg',
+                    fullDescription: `
+                        <p>Cubism was a revolutionary art movement that emerged in the early 20th century, pioneered primarily by Pablo Picasso and Georges Braque between 1907-1914.</p>
+                        <p><strong>Key characteristics:</strong></p>
+                        <ul>
+                            <li>Objects broken up, analyzed, and reassembled in abstract form</li>
+                            <li>Multiple viewpoints shown simultaneously</li>
+                            <li>Geometric fragmentation of forms</li>
+                            <li>Limited color palette in early (analytical) phase</li>
+                            <li>Introduction of collage elements in later (synthetic) phase</li>
+                        </ul>
+                        <p><strong>Notable artists:</strong> Pablo Picasso, Georges Braque, Juan Gris, Fernand Léger, and Jean Metzinger.</p>
+                        <h4>Famous Works</h4>
+                    `,
+                    examples: [
+                        { title: 'Les Demoiselles d\'Avignon by Picasso', image: 'https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/Les_Demoiselles_d%27Avignon.jpg/320px-Les_Demoiselles_d%27Avignon.jpg' },
+                        { title: 'Portrait of Ambroise Vollard by Picasso', image: 'https://upload.wikimedia.org/wikipedia/en/b/b3/Portrait_of_Ambroise_Vollard%2C_1910%2C_Pushkin_Museum.jpg' },
+                        { title: 'Houses at l\'Estaque by Georges Braque', image: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Houses_at_l%27Estaque.jpg/320px-Houses_at_l%27Estaque.jpg' }
+                    ],
+                    timelineYear: 1910
+                },
+                {
+                    id: 'surrealism',
+                    title: 'Surrealism',
+                    period: '1920s-1950s',
+                    description: 'Explored the unconscious mind through dreamlike imagery and juxtaposition of unexpected elements.',
+                    image: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/The_Persistence_of_Memory.jpg/320px-The_Persistence_of_Memory.jpg',
+                    fullDescription: `
+                        <p>Surrealism was an artistic and literary movement that sought to release the creative potential of the unconscious mind. It emerged in the aftermath of World War I in Paris in the 1920s.</p>
+                        <p><strong>Key characteristics:</strong></p>
+                        <ul>
+                            <li>Elements of surprise and unexpected juxtapositions</li>
+                            <li>Dreamlike imagery and scenarios</li>
+                            <li>Influence from Freudian psychology and theories of the unconscious</li>
+                            <li>Automatic drawing and writing techniques</li>
+                            <li>Irrational, fantastical scenes and symbolic imagery</li>
+                        </ul>
+                        <p><strong>Notable artists:</strong> Salvador Dalí, René Magritte, Max Ernst, Joan Miró, and Frida Kahlo.</p>
+                        <h4>Famous Works</h4>
+                    `,
+                    examples: [
+                        { title: 'The Persistence of Memory by Salvador Dalí', image: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/The_Persistence_of_Memory.jpg/320px-The_Persistence_of_Memory.jpg' },
+                        { title: 'The Treachery of Images by René Magritte', image: 'https://upload.wikimedia.org/wikipedia/en/thumb/b/b9/MagrittePipe.jpg/320px-MagrittePipe.jpg' },
+                        { title: 'The Elephant Celebes by Max Ernst', image: 'https://uploads0.wikiart.org/images/max-ernst/the-elephant-celebes.jpg' }
+                    ],
+                    timelineYear: 1930
+                },
+                {
+                    id: 'abstract-expressionism',
+                    title: 'Abstract Expressionism',
+                    period: '1940s-1950s',
+                    description: 'Emphasized spontaneous creation and emotional intensity through gestural brush strokes and color fields.',
+                    image: 'https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/No._5%2C_1948.jpg/300px-No._5%2C_1948.jpg',
+                    fullDescription: `
+                        <p>Abstract Expressionism emerged in New York in the 1940s, becoming the first specifically American movement to achieve international influence and put New York at the center of the Western art world.</p>
+                        <p><strong>Key characteristics:</strong></p>
+                        <ul>
+                            <li>Emphasis on spontaneous, automatic, or subconscious creation</li>
+                            <li>Expression of emotions rather than representation of objects</li>
+                            <li>Action painting (Jackson Pollock) vs. Color Field painting (Mark Rothko)</li>
+                            <li>Large scale canvases</li>
+                            <li>Gestural brush strokes or color washes</li>
+                        </ul>
+                        <p><strong>Notable artists:</strong> Jackson Pollock, Mark Rothko, Willem de Kooning, Joan Mitchell, and Franz Kline.</p>
+                        <h4>Famous Works</h4>
+                    `,
+                    examples: [
+                        { title: 'No. 5, 1948 by Jackson Pollock', image: 'https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/No._5%2C_1948.jpg/300px-No._5%2C_1948.jpg' },
+                        { title: 'Woman V by Willem de Kooning', image: 'https://uploads3.wikiart.org/images/willem-de-kooning/woman-v.jpg' },
+                        { title: 'Orange, Red, Yellow by Mark Rothko', image: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/87/Orange%2C_Red%2C_Yellow.jpg/300px-Orange%2C_Red%2C_Yellow.jpg' }
+                    ],
+                    timelineYear: 1945
+                },
+                {
+                    id: 'pop-art',
+                    title: 'Pop Art',
+                    period: '1950s-1970s',
+                    description: 'Celebrated popular culture and mass media, often using imagery from advertising, comic books, and mundane objects.',
+                    image: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Warhol-Campbell_Soup-1-screenprint-1968.jpg/320px-Warhol-Campbell_Soup-1-screenprint-1968.jpg',
+                    fullDescription: `
+                        <p>Pop Art emerged in the mid-1950s in Britain and late 1950s in the United States as a reaction against abstract expressionism, drawing inspiration from sources in popular and commercial culture.</p>
+                        <p><strong>Key characteristics:</strong></p>
+                        <ul>
+                            <li>Imagery from popular culture, advertising, and mass media</li>
+                            <li>Bold, simple colors and clean lines</li>
+                            <li>Reproduction techniques like silkscreen printing</li>
+                            <li>Ironic or satirical treatment of consumerism</li>
+                            <li>Elevation of mundane or banal subjects to fine art</li>
+                        </ul>
+                        <p><strong>Notable artists:</strong> Andy Warhol, Roy Lichtenstein, Claes Oldenburg, David Hockney, and Jasper Johns.</p>
+                        <h4>Famous Works</h4>
+                    `,
+                    examples: [
+                        { title: 'Campbell\'s Soup Cans by Andy Warhol', image: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Warhol-Campbell_Soup-1-screenprint-1968.jpg/320px-Warhol-Campbell_Soup-1-screenprint-1968.jpg' },
+                        { title: 'Whaam! by Roy Lichtenstein', image: 'https://upload.wikimedia.org/wikipedia/en/thumb/b/b7/Roy_Lichtenstein_Whaam.jpg/320px-Roy_Lichtenstein_Whaam.jpg' },
+                        { title: 'Flag by Jasper Johns', image: 'https://upload.wikimedia.org/wikipedia/en/thumb/6/6a/Jasper_Johns%27s_%27Flag%27%2C_Encaustic%2C_oil_and_collage_on_fabric_mounted_on_plywood%2C1954-55.jpg/320px-Jasper_Johns%27s_%27Flag%27%2C_Encaustic%2C_oil_and_collage_on_fabric_mounted_on_plywood%2C1954-55.jpg' }
+                    ],
+                    timelineYear: 1960
+                }
+            ],
+            digital: [
+                {
+                    id: 'digital-painting',
+                    title: 'Digital Painting',
+                    period: '1990s-Present',
+                    description: 'Creating artwork using digital tools that simulate traditional painting techniques.',
+                    image: '/api/placeholder/400/320',
+                    fullDescription: `
+                        <p>Digital painting uses computer software to simulate traditional painting media and techniques. It has evolved significantly since the 1990s with the development of sophisticated graphics tablets and software.</p>
+                        <p><strong>Key characteristics:</strong></p>
+                        <ul>
+                            <li>Simulated brushes and painting effects</li>
+                            <li>Layered composition allowing non-destructive editing</li>
+                            <li>Wide color palette and unlimited canvas size</li>
+                            <li>Precise control and ability to undo mistakes</li>
+                            <li>Often indistinguishable from traditional media</li>
+                        </ul>
+                        <p><strong>Notable artists:</strong> Craig Mullins, Feng Zhu, Jaime Jones, Loish, and Jason Chan.</p>
+                        <h4>Common Applications</h4>
+                    `,
+                    examples: [
+                        { title: 'Concept Art for Films and Games', image: '/api/placeholder/400/320' },
+                        { title: 'Digital Illustrations for Publications', image: '/api/placeholder/400/320' },
+                        { title: 'Character Design and Development', image: '/api/placeholder/400/320' }
+                    ],
+                    timelineYear: 1995
+                },
+                {
+                    id: 'pixel-art',
+                    title: 'Pixel Art',
+                    period: '1970s-Present',
+                    description: 'Creating images with precise pixel-level editing, often associated with video games and retro aesthetics.',
+                    image: '/api/placeholder/400/320',
+                    fullDescription: `
+                        <p>Pixel art emerged from the technical limitations of early computer and video game systems. Despite technological advances, it remains popular for its distinctive aesthetic and nostalgic appeal.</p>
+                        <p><strong>Key characteristics:</strong></p>
+                        <ul>
+                            <li>Hand-placed individual pixels</li>
+                            <li>Limited color palettes</li>
+                            <li>Careful use of dithering and anti-aliasing</li>
+                            <li>Strong focus on silhouettes and readability</li>
+                            <li>Often inspired by 8-bit and 16-bit era games</li>
+                        </ul>
+                        <p><strong>Notable artists:</strong> eBoy, Paul Robertson, Octavi Navarro, Mark Ferrari, and Waneella.</p>
+                        <h4>Common Applications</h4>
+                    `,
+                    examples: [
+                        { title: 'Indie Video Games', image: '/api/placeholder/400/320' },
+                        { title: 'Isometric Pixel Scenes', image: '/api/placeholder/400/320' },
+                        { title: 'Animated Pixel Art', image: '/api/placeholder/400/320' }
+                    ],
+                    timelineYear: 1980
+                },
+                {
+                    id: 'generative-art',
+                    title: 'Generative Art',
+                    period: '1960s-Present',
+                    description: 'Art created with autonomous systems where the artist creates rules that determine the artwork rather than creating it directly.',
+                    image: '/api/placeholder/400/320',
+                    fullDescription: `
+                        <p>Generative art refers to artwork created with autonomous systems, typically using algorithms, AI, or other procedural techniques where the artist defines rules but the final output has elements of unpredictability.</p>
+                        <p><strong>Key characteristics:</strong></p>
+                        <ul>
+                            <li>Use of algorithms and computational systems</li>
+                            <li>Randomness and emergent behavior</li>
+                            <li>System autonomy with artist-defined parameters</li>
+                            <li>Often interactive or continuously evolving</li>
+                            <li>Intersection of art, mathematics, and computer science</li>
+                        </ul>
+                        <p><strong>Notable artists:</strong> Vera Molnár, Harold Cohen, Casey Reas, Sofia Crespo, and Refik Anadol.</p>
+                        <h4>Common Applications</h4>
+                    `,
+                    examples: [
+                        { title: 'Algorithm-Based Visual Art', image: '/api/placeholder/400/320' },
+                        { title: 'AI-Generated Imagery', image: '/api/placeholder/400/320' },
+                        { title: 'Interactive Digital Installations', image: '/api/placeholder/400/320' }
+                    ],
+                    timelineYear: 2010
+                }
+            ],
+            global: [
+                {
+                    id: 'islamic-art',
+                    title: 'Islamic Art',
+                    period: '7th Century-Present',
+                    description: 'Characterized by geometric patterns, calligraphy, and arabesque designs, avoiding figurative representation.',
+                    image: '/api/placeholder/400/320',
+                    fullDescription: `
+                        <p>Islamic art encompasses the visual arts produced since the 7th century by people who lived within territories inhabited or ruled by culturally Islamic populations. It is not restricted to religious art but includes all artistic traditions that flourished under Islamic patronage.</p>
+                        <p><strong>Key characteristics:</strong></p>
+                        <ul>
+                            <li>Complex geometric patterns and symmetry</li>
+                            <li>Stylized floral motifs (arabesque)</li>
+                            <li>Calligraphy as a major art form</li>
+                            <li>Limited figurative representation</li>
+                            <li>Architectural elements like minarets and domes</li>
+                        </ul>
+                        <p><strong>Notable forms:</strong> Manuscript illumination, architectural decoration, ceramics, textile arts, and metalwork.</p>
+                        <h4>Famous Examples</h4>
+                    `,
+                    examples: [
+                        { title: 'Alhambra Palace Architecture', image: '/api/placeholder/400/320' },
+                        { title: 'Persian Miniature Paintings', image: '/api/placeholder/400/320' },
+                        { title: 'Ottoman Iznik Pottery', image: '/api/placeholder/400/320' }
+                    ],
+                    timelineYear: 800
+                },
+                {
+                    id: 'japanese-art',
+                    title: 'Japanese Art',
+                    period: 'Ancient-Present',
+                    description: 'Rich artistic tradition including ukiyo-e woodblock prints, calligraphy, ceramics, and gardens.',
+                    image: '/api/placeholder/400/320',
+                    fullDescription: `
+                        <p>Japanese art covers a wide range of art styles and media, including ancient pottery, sculpture, ink painting, calligraphy, ukiyo-e woodblock prints, origami, and manga. It has been influenced by Chinese art and later Western art while maintaining its unique aesthetic.</p>
+                        <p><strong>Key characteristics:</strong></p>
+                        <ul>
+                            <li>Emphasis on simplicity and negative space (ma)</li>
+                            <li>Appreciation of natural forms and asymmetry</li>
+                            <li>Seasonal references and symbolism</li>
+                            <li>Precise techniques and craftsmanship</li>
+                            <li>Distinctive linear qualities</li>
+                        </ul>
+                        <p><strong>Notable forms:</strong> Ukiyo-e, sumi-e (ink wash painting), pottery, calligraphy, garden design, and textile arts.</p>
+                        <h4>Famous Examples</h4>
+                    `,
+                    examples: [
+                        { title: 'The Great Wave off Kanagawa by Hokusai', image: '/api/placeholder/400/320' },
+                        { title: 'Ryoan-ji Rock Garden in Kyoto', image: '/api/placeholder/400/320' },
+                        { title: 'Jomon Period Pottery', image: '/api/placeholder/400/320' }
+                    ],
+                    timelineYear: 1700
+                },
+                {
+                    id: 'african-art',
+                    title: 'African Art',
+                    period: 'Ancient-Present',
+                    description: 'Diverse traditions with emphasis on sculpture, masquerade, and functional art objects with symbolic meaning.',
+                    image: '/api/placeholder/400/320',
+                    fullDescription: `
+                        <p>African art encompasses the diverse cultural artistic traditions from the continent of Africa. Rather than a singular style, it represents thousands of different styles from various ethnic groups and regions, often serving ritualistic, communicative, and practical purposes.</p>
+                        <p><strong>Key characteristics:</strong></p>
+                        <ul>
+                            <li>Stylized human and animal forms</li>
+                            <li>Symbolic representations and abstraction</li>
+                            <li>Integration of art with daily life and spirituality</li>
+                            <li>Use of natural materials</li>
+                            <li>Emphasis on three-dimensional forms</li>
+                        </ul>
+                        <p><strong>Notable forms:</strong> Masks, figurative sculptures, textiles, pottery, jewelry, and architecture.</p>
+                        <h4>Famous Examples</h4>
+                    `,
+                    examples: [
+                        { title: 'Benin Bronze Sculptures', image: '/api/placeholder/400/320' },
+                        { title: 'Yoruba Gelede Masks', image: '/api/placeholder/400/320' },
+                        { title: 'Ndebele House Paintings', image: '/api/placeholder/400/320' }
+                    ],
+                    timelineYear: 1400
+                }
+            ]
+        };
+
+        // Timeline data - combined from all categories
+        function generateTimelineData() {
+            let timelineData = [];
+            
+            // Process each category
+            for (const category in artStyles) {
+                artStyles[category].forEach(style => {
+                    timelineData.push({
+                        id: style.id,
+                        title: style.title,
+                        period: style.period,
+                        description: style.description,
+                        timelineYear: style.timelineYear,
+                        category: category
+                    });
+                });
+            }
+            
+            // Sort by timeline year
+            timelineData.sort((a, b) => a.timelineYear - b.timelineYear);
+            
+            return timelineData;
+        }
+
+        // Generate timeline items
+        function generateTimeline() {
+            const timelineContainer = document.querySelector('.timeline');
+            const timelineData = generateTimelineData();
+            
+            timelineData.forEach(item => {
+                const timelineItem = document.createElement('div');
+                timelineItem.className = 'timeline-item';
+                
+                timelineItem.innerHTML = `
+                    <div class="timeline-content">
+                        <h3>${item.title}</h3>
+                        <span class="period">${item.period}</span>
+                        <p>${item.description}</p>
+                        <button class="btn learn-more" data-id="${item.id}" data-category="${item.category}">Learn more</button>
+                    </div>
+                `;
+                
+                timelineContainer.appendChild(timelineItem);
+            });
+        }
+
+        // Generate art cards by category
+        function generateArtCards() {
+            // Generate cards for each category
+            for (const category in artStyles) {
+                const container = document.getElementById(`${category}-art-styles`);
+                
+                artStyles[category].forEach(style => {
+                    const card = document.createElement('div');
+                    card.className = 'art-card';
+                    card.innerHTML = `
+                        <div class="art-card-image">
+                            <img src="${style.image}" alt="${style.title} art style">
+                        </div>
+                        <div class="art-card-content">
+                            <h3>${style.title}</h3>
+                            <span class="period">${style.period}</span>
+                            <p>${style.description}</p>
+                            <button class="btn learn-more" data-id="${style.id}" data-category="${category}">Learn more</button>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+        }
+
+        // Handle modal functionality
+        function setupModal() {
+            const modal = document.getElementById('modal');
+            const closeBtn = document.querySelector('.close-modal');
+            
+            // Function to set up learn more buttons - needs to be called after generating content
+            function setupLearnMoreButtons() {
+                const learnMoreBtns = document.querySelectorAll('.learn-more');
+                
+                // Open modal with appropriate content
+                learnMoreBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const styleId = btn.getAttribute('data-id');
+                        const category = btn.getAttribute('data-category');
+                        const style = artStyles[category].find(s => s.id === styleId);
+                        
+                        if (style) {
+                            const modalContent = document.getElementById('modal-content-inner');
+                            let examplesHTML = '';
+                            
+                            style.examples.forEach(example => {
+                                examplesHTML += `
+                                    <div class="artwork-example" data-title="${example.title}">
+                                        <img src="${example.image}" alt="${example.title}">
+                                    </div>
+                                `;
+                            });
+                            
+                            modalContent.innerHTML = `
+                                <h2>${style.title}</h2>
+                                <p><em>${style.period}</em></p>
+                                ${style.fullDescription}
+                                <div class="artwork-examples">
+                                    ${examplesHTML}
+                                </div>
+                            `;
+                            
+                            modal.classList.add('active');
+                        }
+                    });
+                });
+            }
+            
+            // Close modal
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+            
+            // Close modal if clicked outside
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+            
+            // Return the setup function for learn more buttons
+            return setupLearnMoreButtons;
+        }
+
+        // Smooth scrolling
+        function setupScrolling() {
+            const scrollLinks = document.querySelectorAll('nav a[data-scroll]');
+            
+            scrollLinks.forEach(link => {
+                link.addEventListener('click', e => {
+                    e.preventDefault();
+                    const sectionId = link.getAttribute('data-scroll');
+                    const section = document.getElementById(sectionId);
+                    
+                    if (section) {
+                        window.scrollTo({
+                            top: section.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            generateTimeline();
+            generateArtCards();
+            const setupLearnMoreButtons = setupModal();
+            setupLearnMoreButtons();  // Call this after generating content
+            setupScrolling();
+        });
+    </script>
+</body>
+  
+  <div class="chat-container">
+    <div class="chat-header">Ammo the Artist</div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="chat-input">
+      <input type="text" id="user-input" placeholder="Create art of...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    const messagesEl = document.getElementById("chat-messages");
+
+    function appendMessage(text, sender) {
+      const msg = document.createElement("div");
+      msg.className = sender === 'user' ? 'user-msg' : 'bot-msg';
+      msg.textContent = text;
+      messagesEl.appendChild(msg);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById("user-input");
+      const text = input.value.trim();
+      if (!text) return;
+      appendMessage(text, 'user');
+      input.value = "";
+
+      appendMessage("Generating art...", 'bot');
+      const imageUrl = await generateArt(text);
+      messagesEl.lastChild.remove();
+      appendMessage("Here's your generated art:", 'bot');
+
+      const img = document.createElement("img");
+      img.src = imageUrl;
+      img.style.width = "100%";
+      img.style.marginTop = "10px";
+      messagesEl.appendChild(img);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    async function generateArt(prompt) {
+      const encodedPrompt = encodeURIComponent(prompt);
+      return `https://image.pollinations.ai/prompt/${encodedPrompt}`;
+    }
+  </script>
+</body>
+</html>
